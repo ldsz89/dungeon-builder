@@ -20,4 +20,4 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
-**/fireabaseConfig.ts
+**/firebaseConfig.ts
