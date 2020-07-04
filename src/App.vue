@@ -8,6 +8,16 @@
   </v-app>
 </template>
 
+<script lang="ts">
+import { mapState } from 'vuex';
+
+export default {
+  computed: {
+    ...mapState(['userProfile']),
+  }
+}
+</script>
+
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
