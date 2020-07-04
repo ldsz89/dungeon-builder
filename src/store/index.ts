@@ -25,10 +25,8 @@ export const store = new Vuex.Store({
   actions: {
     async signup({dispatch}, form) {
       const user = await fb.auth.createUserWithEmailAndPassword(form.email, form.password);
-      console.log('#signup: user:', user);
       await fb.usersCollection.doc(user.user?.uid).set({
         name: form.name,
-        title: form.title,
       });
       dispatch('fetchUserProfile', user);
     },
@@ -44,7 +42,7 @@ export const store = new Vuex.Store({
     },
     async fetchUserProfile({commit}, user) {
       const userProfile = await fb.usersCollection.doc(user.uid).get();
-      console.log('#fetchUserProfile: userProfile: ', userProfile);
+      // console.log('#fetchUserProfile: userProfile: ', userProfile);
       commit('setUserProfile', userProfile.data());
       router.push('/');
     },
