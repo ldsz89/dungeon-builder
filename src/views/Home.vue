@@ -9,9 +9,15 @@
 </template>
 
 <script>
-// @ is an alias to /src
+import {Component, Vue} from 'vue-property-decorator';
 import HelloWorld from '@/components/HelloWorld.vue';
+import Navigation from '@/components/Navigation.vue';
 
+@Component({
+  components: {
+    Navigation,
+  }
+})
 export default {
   name: 'Home',
   components: {
