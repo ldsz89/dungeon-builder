@@ -1,13 +1,18 @@
 <template>
   <div>
-    <span />
+    <navigation />
   </div>
 </template>
 
 <script lang="ts">
 import {Component, Vue} from 'vue-property-decorator';
+import Navigation from '@/components/Navigation.vue';
 
-@Component
+@Component({
+  components: {
+    Navigation,
+  },
+})
 export default class Dungeon extends Vue {
 }
 </script>
