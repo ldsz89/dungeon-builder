@@ -10,17 +10,17 @@ const routes: Array<RouteConfig> = [
     path: '/',
     name: 'Home',
     component: Dashboard,
-    meta: {
-      requiresAuth: true,
-    },
+    // meta: {
+    //   requiresAuth: true,
+    // },
   },
   {
     path: '/dungeon',
     name: 'Dungeon',
-    component: () => import(/* webpackChunkName: "login" */ '../views/Dungeon.vue'),
-    meta: {
-      requiresAuth: true,
-    },
+    component: () => import(/* webpackChunkName: "login" */ '../views/Dungeon/Dungeon.vue'),
+    // meta: {
+    //   requiresAuth: true,
+    // },
   },
   {
     path: '/login',
