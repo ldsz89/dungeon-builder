@@ -3,173 +3,64 @@
     sm="8"
     class="paint-options"
   >
-    <svg
-      width="50px"
-      height="50px"
+    <grass-tile
       :class="{ active: isActivePaint('grass') }"
-      @click="setPaint('grass')"
-    >
-      <g>
-        <polygon
-          stroke="#000000"
-          stroke-width="0.1"
-          fill="#ffffff"
-          points="12,0 36,0 48,21 36,42 12,42 0,21"
-          class="grass"
-        />
-        <image
-          href="../../../assets/grass.png"
-          height="36"
-          width="36"
-          x="6"
-          y="2"
-          transform="scale(1)"
-        />
-      </g>
-    </svg>
-    <svg
-      width="50px"
-      height="50px"
+      @click.native="setPaint('grass')"
+    />
+    <forest-tile
       :class="{ active: isActivePaint('forest') }"
-      @click="setPaint('forest')"
-    >
-      <g>
-        <polygon
-          stroke="#000000"
-          stroke-width="0.1"
-          fill="#ffffff"
-          points="12,0 36,0 48,21 36,42 12,42 0,21"
-          class="forest"
-        />
-        <image
-          href="../../../assets/forest.png"
-          height="36"
-          width="36"
-          x="6"
-          y="2"
-          transform="scale(1)"
-        />
-      </g>
-    </svg>
-    <svg
-      width="50px"
-      height="50px"
+      @click.native="setPaint('forest')"
+    />
+    <mountain-tile
+      :class="{ active: isActivePaint('mountains') }"
+      @click.native="setPaint('mountains')"
+    />
+    <hills-tile
       :class="{ active: isActivePaint('hills') }"
-      @click="setPaint('hills')"
-    >
-      <g>
-        <polygon
-          stroke="#000000"
-          stroke-width="0.1"
-          fill="#ffffff"
-          points="12,0 36,0 48,21 36,42 12,42 0,21"
-          class="hills"
-        />
-        <image
-          href="../../../assets/hills.png"
-          height="36"
-          width="36"
-          x="6"
-          y="2"
-          transform="scale(1)"
-        />
-      </g>
-    </svg>
-    <svg
-      width="50px"
-      height="50px"
+      @click.native="setPaint('hills')"
+    />
+    <shrubland-tile
       :class="{ active: isActivePaint('shrubland') }"
-      @click="setPaint('shrubland')"
-    >
-      <g>
-        <polygon
-          stroke="#000000"
-          stroke-width="0.1"
-          fill="#ffffff"
-          points="12,0 36,0 48,21 36,42 12,42 0,21"
-          class="shrubland"
-        />
-        <image
-          href="../../../assets/shrubland.png"
-          height="36"
-          width="36"
-          x="6"
-          y="2"
-          transform="scale(1)"
-        />
-      </g>
-    </svg>
-    <svg
-      width="50px"
-      height="50px"
+      @click.native="setPaint('shrubland')"
+    />
+    <tropical-forest-tile
       :class="{ active: isActivePaint('tropical-forest') }"
-      @click="setPaint('tropical-forest')"
-    >
-      <g>
-        <polygon
-          stroke="#000000"
-          stroke-width="0.1"
-          fill="#ffffff"
-          points="12,0 36,0 48,21 36,42 12,42 0,21"
-          class="tropical-forest"
-        />
-        <image
-          href="../../../assets/tropical_seasonal_forest.png"
-          height="36"
-          width="36"
-          x="6"
-          y="2"
-          transform="scale(1)"
-        />
-      </g>
-    </svg>
-    <svg
-      width="50px"
-      height="50px"
+      @click.native="setPaint('topical-forest')"
+    />
+    <desert-tile
       :class="{ active: isActivePaint('desert') }"
-      @click="setPaint('desert')"
-    >
-      <g>
-        <polygon
-          stroke="#000000"
-          stroke-width="0.1"
-          fill="#ffffff"
-          points="12,0 36,0 48,21 36,42 12,42 0,21"
-          class="desert"
-        />
-        <image
-          href="../../../assets/desert.png"
-          height="36"
-          width="36"
-          x="6"
-          y="2"
-          transform="scale(1)"
-        />
-      </g>
-    </svg>
-    <svg
-      width="50px"
-      height="50px"
+      @click.native="setPaint('desert')"
+    />
+    <water-tile
       :class="{ active: isActivePaint('water') }"
-      @click="setPaint('water')"
-    >
-      <g>
-        <polygon
-          stroke="#000000"
-          stroke-width="0.1"
-          fill="#ffffff"
-          points="12,0 36,0 48,21 36,42 12,42 0,21"
-          class="water"
-        />
-      </g>
-    </svg>
+      @click.native="setPaint('water')"
+    />
   </v-col>
 </template>
 
 <script lang="ts">
 import {Component, Prop, Vue} from 'vue-property-decorator';
+import DesertTile from '@/components/tiles/terrain/DesertTile.vue';
+import ForestTile from '@/components/tiles/terrain/ForestTile.vue';
+import GrassTile from '@/components/tiles/terrain/GrassTile.vue';
+import HillsTile from '@/components/tiles/terrain/HillsTile.vue';
+import MountainTile from '@/components/tiles/terrain/MountainTile.vue';
+import ShrublandTile from '@/components/tiles/terrain/ShrublandTile.vue';
+import TropicalForestTile from '@/components/tiles/terrain/TropicalForestTile.vue';
+import WaterTile from '@/components/tiles/terrain/WaterTile.vue';
 
-@Component
+@Component({
+  components: {
+    DesertTile,
+    ForestTile,
+    GrassTile,
+    HillsTile,
+    MountainTile,
+    ShrublandTile,
+    TropicalForestTile,
+    WaterTile,
+  },
+})
 export default class PaintTerrain extends Vue {
   @Prop() paint!: string;
   @Prop() setPaint!: any;
