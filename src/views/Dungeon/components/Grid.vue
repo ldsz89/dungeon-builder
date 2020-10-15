@@ -27,7 +27,7 @@
         >
           <image
             v-if="cell.type !== 'water'"
-            :href="getImageUrl(cell)"
+            :href="getImageUrl(cell.type)"
             height="36"
             width="36"
             x="6"
@@ -103,7 +103,6 @@
 
 <script lang="ts">
 import {Component, Prop, Vue} from 'vue-property-decorator';
-import GrassTile from '@/components/tiles/terrain/GrassTile.vue';
 
 interface MapCell {
   type: string;
@@ -111,11 +110,7 @@ interface MapCell {
   cellIndex: number;
 }
 
-@Component({
-  components: {
-    GrassTile,
-  },
-})
+@Component
 export default class Grid extends Vue {
   @Prop() paint!: string;
   @Prop() mapCells!: MapCell[][];
@@ -133,19 +128,19 @@ export default class Grid extends Vue {
     return `${45 * this.mapCells.length}px`;
   }
 
-  getImageUrl(cell: MapCell) {
+  getImageUrl(cellType: string) {
     let images;
-    if (this.terrainOptions.includes(cell.type)) {
+    if (this.terrainOptions.includes(cellType)) {
       images = require.context('@/assets/terrain/', false, /\.png$/);
-    } else if (this.roadOptions.includes(cell.type)) {
+    } else if (this.roadOptions.includes(cellType)) {
       images = require.context('@/assets/roads/', false, /\.png$/);
-    } else if (this.landmarkOptions.includes(cell.type)) {
-      console.log('landmark option:', cell.type);
+    } else if (this.landmarkOptions.includes(cellType)) {
+      console.log('landmark option:', cellType);
       images = require.context('@/assets/landmarks/', false, /\.png$/);
     } else {
       images = require.context('@/assets/terrain/', false, /\.png$/);
     }
-    return images('./' + cell.type + '.png');
+    return images('./' + cellType + '.png');
   }
 
   cellTranslation(gridIndexX: number, gridIndexY: number): string {
