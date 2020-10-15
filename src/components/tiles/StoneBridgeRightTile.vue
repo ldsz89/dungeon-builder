@@ -11,7 +11,7 @@
         points="12,0 36,0 48,21 36,42 12,42 0,21"
       />
       <image
-        href="../../assets/stone_bridge_right.png"
+        href="../../assets/landmarks/stone-bridge-right.png"
         height="36"
         width="36"
         x="6"

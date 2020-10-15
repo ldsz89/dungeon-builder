@@ -11,7 +11,7 @@
         points="12,0 36,0 48,21 36,42 12,42 0,21"
       />
       <image
-        href="../../assets/old_bridge.png"
+        href="../../assets/landmarks/old-bridge.png"
         height="36"
         width="36"
         x="6"
