@@ -25,7 +25,7 @@
     />
     <tropical-forest-tile
       :class="{ active: isActivePaint('tropical-forest') }"
-      @click.native="setPaint('topical-forest')"
+      @click.native="setPaint('tropical-forest')"
     />
     <desert-tile
       :class="{ active: isActivePaint('desert') }"

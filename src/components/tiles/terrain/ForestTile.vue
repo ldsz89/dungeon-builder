@@ -38,4 +38,8 @@ polygon {
     fill: rgba(120, 170, 70, .8);
   }
 }
+
+.active {
+  background: rgb(100, 180, 225);
+}
 </style>

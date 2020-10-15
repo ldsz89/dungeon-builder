@@ -30,4 +30,8 @@ polygon {
     fill: #266b99;
   }
 }
+
+.active {
+  background: rgb(100, 180, 225);
+}
 </style>

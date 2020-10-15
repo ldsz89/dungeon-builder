@@ -11,7 +11,7 @@
         points="12,0 36,0 48,21 36,42 12,42 0,21"
       />
       <image
-        href="../../../assets/terrain/tropical_forest.png"
+        href="../../../assets/terrain/tropical-forest.png"
         height="36"
         width="36"
         x="6"
@@ -37,5 +37,9 @@ polygon {
   &:hover {
     fill: #468355;
   }
+}
+
+.active {
+  background: rgb(100, 180, 225);
 }
 </style>

@@ -57,174 +57,13 @@
           :paint="paint"
           :set-paint="setPaint"
         />
-        <!-- <v-col
-          v-if="mapPaintOption === 'Terrain'"
-          sm="8"
-          class="paint-options"
-        >
-          <svg
-            width="50px"
-            height="50px"
-            :class="{ active: isActivePaint('grass') }"
-            @click="setPaint('grass')"
-          >
-            <g>
-              <polygon
-                stroke="#000000"
-                stroke-width="0.1"
-                fill="#ffffff"
-                points="12,0 36,0 48,21 36,42 12,42 0,21"
-                class="grass"
-              />
-              <image
-                href="../../assets/grass.png"
-                height="36"
-                width="36"
-                x="6"
-                y="2"
-                transform="scale(1)"
-              />
-            </g>
-          </svg>
-          <svg
-            width="50px"
-            height="50px"
-            :class="{ active: isActivePaint('forest') }"
-            @click="setPaint('forest')"
-          >
-            <g>
-              <polygon
-                stroke="#000000"
-                stroke-width="0.1"
-                fill="#ffffff"
-                points="12,0 36,0 48,21 36,42 12,42 0,21"
-                class="forest"
-              />
-              <image
-                href="../../assets/forest.png"
-                height="36"
-                width="36"
-                x="6"
-                y="2"
-                transform="scale(1)"
-              />
-            </g>
-          </svg>
-          <svg
-            width="50px"
-            height="50px"
-            :class="{ active: isActivePaint('hills') }"
-            @click="setPaint('hills')"
-          >
-            <g>
-              <polygon
-                stroke="#000000"
-                stroke-width="0.1"
-                fill="#ffffff"
-                points="12,0 36,0 48,21 36,42 12,42 0,21"
-                class="hills"
-              />
-              <image
-                href="../../assets/hills.png"
-                height="36"
-                width="36"
-                x="6"
-                y="2"
-                transform="scale(1)"
-              />
-            </g>
-          </svg>
-          <svg
-            width="50px"
-            height="50px"
-            :class="{ active: isActivePaint('shrubland') }"
-            @click="setPaint('shrubland')"
-          >
-            <g>
-              <polygon
-                stroke="#000000"
-                stroke-width="0.1"
-                fill="#ffffff"
-                points="12,0 36,0 48,21 36,42 12,42 0,21"
-                class="shrubland"
-              />
-              <image
-                href="../../assets/shrubland.png"
-                height="36"
-                width="36"
-                x="6"
-                y="2"
-                transform="scale(1)"
-              />
-            </g>
-          </svg>
-          <svg
-            width="50px"
-            height="50px"
-            :class="{ active: isActivePaint('tropical-forest') }"
-            @click="setPaint('tropical-forest')"
-          >
-            <g>
-              <polygon
-                stroke="#000000"
-                stroke-width="0.1"
-                fill="#ffffff"
-                points="12,0 36,0 48,21 36,42 12,42 0,21"
-                class="tropical-forest"
-              />
-              <image
-                href="../../assets/tropical_seasonal_forest.png"
-                height="36"
-                width="36"
-                x="6"
-                y="2"
-                transform="scale(1)"
-              />
-            </g>
-          </svg>
-          <svg
-            width="50px"
-            height="50px"
-            :class="{ active: isActivePaint('desert') }"
-            @click="setPaint('desert')"
-          >
-            <g>
-              <polygon
-                stroke="#000000"
-                stroke-width="0.1"
-                fill="#ffffff"
-                points="12,0 36,0 48,21 36,42 12,42 0,21"
-                class="desert"
-              />
-              <image
-                href="../../assets/desert.png"
-                height="36"
-                width="36"
-                x="6"
-                y="2"
-                transform="scale(1)"
-              />
-            </g>
-          </svg>
-          <svg
-            width="50px"
-            height="50px"
-            :class="{ active: isActivePaint('water') }"
-            @click="setPaint('water')"
-          >
-            <g>
-              <polygon
-                stroke="#000000"
-                stroke-width="0.1"
-                fill="#ffffff"
-                points="12,0 36,0 48,21 36,42 12,42 0,21"
-                class="water"
-              />
-            </g>
-          </svg>
-        </v-col> -->
+        <paint-roads
+          v-if="mapPaintOption === 'Roads'"
+          :paint="paint"
+          :set-paint="setPaint"
+        />
       </v-row>
-      <div id="worldmap">
+      <!-- <div id="worldmap">
         <svg
           v-if="worldmap.mapCells.length"
           width="100%"
@@ -243,7 +82,7 @@
               fill="#ffffff"
               points="12,0 36,0 48,21 36,42 12,42 0,21"
               :transform="cellTranslation(indexX, indexY)"
-              :class="cell.type"
+              :class="cellClass(cell.type)"
               @click="changeCellType(cell)"
             />
             <g
@@ -252,7 +91,7 @@
             >
               <image
                 v-if="cell.type == 'grass'"
-                href="../../assets/grass.png"
+                href="../../assets/terrain/grass.png"
                 height="36"
                 width="36"
                 x="6"
@@ -292,7 +131,7 @@
               />
               <image
                 v-if="cell.type == 'tropical-forest'"
-                href="../../assets/tropical_seasonal_forest.png"
+                href="../../assets/terrain/tropical-forest.png"
                 height="36"
                 width="36"
                 x="6"
@@ -330,10 +169,44 @@
                 :transform="cellTranslation(indexX, indexY)"
                 @click="changeCellType(cell)"
               />
+              <image
+                v-if="cell.type == 'road_1'"
+                href="../../assets/roads/road_1.png"
+                height="36"
+                width="36"
+                x="6"
+                y="2"
+                :transform="cellTranslation(indexX, indexY)"
+                @click="changeCellType(cell)"
+              />
+              <image
+                v-if="cell.type == 'road_2'"
+                href="../../assets/roads/road_2.png"
+                height="36"
+                width="36"
+                x="6"
+                y="2"
+                :transform="cellTranslation(indexX, indexY)"
+                @click="changeCellType(cell)"
+              />
+              <image
+                v-if="cell.type == 'road_3'"
+                href="../../assets/roads/road_3.png"
+                height="36"
+                width="36"
+                x="6"
+                y="2"
+                :transform="cellTranslation(indexX, indexY)"
+                @click="changeCellType(cell)"
+              />
             </g>
           </g>
         </svg>
-      </div>
+      </div> -->
+      <grid
+        :paint="paint"
+        :map-cells="worldmap.mapCells"
+      />
     </v-card>
   </div>
 </template>
@@ -343,6 +216,9 @@ import {Component, Vue} from 'vue-property-decorator';
 import Navigation from '@/components/Navigation.vue';
 import PaintTerrain from './components/PaintTerrain.vue';
 import PaintLandmarks from './components/PaintLandmarks.vue';
+import PaintRoads from './components/PaintRoads.vue';
+import Grid from './components/Grid.vue';
+import BlacksmithTile from '@/components/tiles/BlacksmithTile.vue';
 
 interface WorldMap {
   name: string;
@@ -362,6 +238,9 @@ interface MapCell {
     Navigation,
     PaintTerrain,
     PaintLandmarks,
+    PaintRoads,
+    Grid,
+    BlacksmithTile,
   },
 })
 export default class Dungeon extends Vue {
@@ -372,7 +251,7 @@ export default class Dungeon extends Vue {
     mapCells: [],
   }
   paint = 'grass';
-  mapPaintOptions = ['Terrain', 'Landmarks'];
+  mapPaintOptions = ['Terrain', 'Landmarks', 'Roads'];
   mapPaintOption = 'Terrain';
 
   mounted(): any {
@@ -381,7 +260,7 @@ export default class Dungeon extends Vue {
       for (let x = 0; x < this.worldmap.sizeX; x++) {
         const mapCell: MapCell = {
           type: 'grass',
-          image: '@/assets/grass.png',
+          image: '../../../assets/terrain/grass.png',
           cellIndex: x,
         };
         row.push(mapCell);
@@ -417,6 +296,22 @@ export default class Dungeon extends Vue {
     cell.type = this.paint;
     cell.image = `@/assets/${this.paint}.png`;
   }
+
+  cellClass(cellType: string): string {
+    switch (cellType) {
+    case 'grass':
+    case 'forest':
+    case 'hills':
+    case 'shrubland':
+    case 'desert':
+    case 'mountains':
+    case 'tropical-forest':
+    case 'water':
+      return cellType;
+    default:
+      return 'landmark';
+    }
+  }
 }
 </script>
 
@@ -426,7 +321,7 @@ export default class Dungeon extends Vue {
     cursor: pointer;
 
     &.active {
-      background: rgb(100, 180, 225);
+      background: #64b4e1;
     }
   }
 }
@@ -501,6 +396,10 @@ export default class Dungeon extends Vue {
 }
 
 .tower {
+  fill: #9c9c9c;
+}
+
+.landmark {
   fill: #9c9c9c;
 }
 </style>
